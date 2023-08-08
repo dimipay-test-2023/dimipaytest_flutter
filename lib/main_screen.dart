@@ -46,7 +46,95 @@ class _MainScreenState extends State<MainScreen> {
                     ),
                     SizedBox(
                       width: screenwidthFixed * 170,
-                      height: screenheightFixed * 153,
+                      height: screenheightFixed * 158,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            '판매',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'Pretendard-SemiBold',
+                                fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            height: screenheightFixed * 12,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              '상품',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                          ),
+                          SizedBox(
+                            height: screenheightFixed * 12,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              '할인 정책',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                          ),
+                          SizedBox(
+                            height: screenheightFixed * 12,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              '결제 내역',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                          ),
+                          SizedBox(
+                            height: screenheightFixed * 12,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              '쿠폰',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height: screenheightFixed * 18,
@@ -54,6 +142,37 @@ class _MainScreenState extends State<MainScreen> {
                     SizedBox(
                       width: screenwidthFixed * 170,
                       height: screenheightFixed * 60,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text(
+                            '관리',
+                            style: TextStyle(
+                                fontSize: 18,
+                                fontFamily: 'Pretendard-SemiBold',
+                                fontWeight: FontWeight.w600),
+                          ),
+                          SizedBox(
+                            height: screenheightFixed * 12,
+                          ),
+                          TextButton(
+                            onPressed: () {},
+                            child: Text(
+                              '결제 단말기',
+                              style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 18,
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                          ),
+                        ],
+                      ),
                     )
                   ],
                 ),
