@@ -62,7 +62,12 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: const Text(
                               '상품',
                               style: TextStyle(
                                   color: Colors.grey,
@@ -70,18 +75,18 @@ class _MainScreenState extends State<MainScreen> {
                                   fontFamily: 'Pretendard-Medium',
                                   fontWeight: FontWeight.w500),
                             ),
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: EdgeInsets.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            ),
                           ),
                           SizedBox(
                             height: screenheightFixed * 12,
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: const Text(
                               '할인 정책',
                               style: TextStyle(
                                   color: Colors.grey,
@@ -89,18 +94,18 @@ class _MainScreenState extends State<MainScreen> {
                                   fontFamily: 'Pretendard-Medium',
                                   fontWeight: FontWeight.w500),
                             ),
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: EdgeInsets.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            ),
                           ),
                           SizedBox(
                             height: screenheightFixed * 12,
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: const Text(
                               '결제 내역',
                               style: TextStyle(
                                   color: Colors.grey,
@@ -108,29 +113,24 @@ class _MainScreenState extends State<MainScreen> {
                                   fontFamily: 'Pretendard-Medium',
                                   fontWeight: FontWeight.w500),
                             ),
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: EdgeInsets.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-                            ),
                           ),
                           SizedBox(
                             height: screenheightFixed * 12,
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: const Text(
                               '쿠폰',
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 18,
                                   fontFamily: 'Pretendard-Medium',
                                   fontWeight: FontWeight.w500),
-                            ),
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: EdgeInsets.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
                           ),
                         ],
@@ -157,18 +157,18 @@ class _MainScreenState extends State<MainScreen> {
                           ),
                           TextButton(
                             onPressed: () {},
-                            child: Text(
+                            style: TextButton.styleFrom(
+                              minimumSize: Size.zero,
+                              padding: EdgeInsets.zero,
+                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
+                            ),
+                            child: const Text(
                               '결제 단말기',
                               style: TextStyle(
                                   color: Colors.grey,
                                   fontSize: 18,
                                   fontFamily: 'Pretendard-Medium',
                                   fontWeight: FontWeight.w500),
-                            ),
-                            style: TextButton.styleFrom(
-                              minimumSize: Size.zero,
-                              padding: EdgeInsets.zero,
-                              tapTargetSize: MaterialTapTargetSize.shrinkWrap,
                             ),
                           ),
                         ],
@@ -196,7 +196,12 @@ class _MainScreenState extends State<MainScreen> {
                           width: screenwidthFixed * 78,
                           height: screenheightFixed * 25,
                           child: const Text(
+                            textAlign: TextAlign.center,
                             '상품 목록',
+                            style: TextStyle(
+                                fontSize: 22,
+                                fontFamily: 'Pretendard-SemiBold',
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                         SizedBox(
@@ -205,6 +210,23 @@ class _MainScreenState extends State<MainScreen> {
                         SizedBox(
                           width: screenwidthFixed * 251,
                           height: screenheightFixed * 41,
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(0),
+                              backgroundColor: const Color(0xff2c3939),
+                            ),
+                            child: const Text(
+                              '필터링된 항목 엑셀로 다운로드',
+                              style: TextStyle(
+                                  fontSize: 21,
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ),
                         ),
                         SizedBox(
                           width: screenwidthFixed * 8,
@@ -212,7 +234,30 @@ class _MainScreenState extends State<MainScreen> {
                         SizedBox(
                           width: screenheightFixed * 124,
                           height: screenheightFixed * 41,
-                        )
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            style: ElevatedButton.styleFrom(
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              padding: const EdgeInsets.all(0),
+                              backgroundColor: const Color(0xff2ea4ab),
+                            ),
+                            child: const Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(Icons.file_download_outlined),
+                                Text(
+                                  '다운로드',
+                                  style: TextStyle(
+                                      fontSize: 21,
+                                      fontFamily: 'Pretendard-Medium',
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -227,7 +272,17 @@ class _MainScreenState extends State<MainScreen> {
                           height: screenheightFixed * 578,
                           width: screenwidthFixed * 768,
                           child: Container(
-                            color: Colors.black,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                            ),
+                            child: Column(
+                              children: [
+                                Row(),
+                                Row(),
+                                Row(),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(
