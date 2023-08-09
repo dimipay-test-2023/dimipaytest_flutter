@@ -17,6 +17,7 @@ class _ProductListState extends State<ProductList> {
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
     return Column(
       children: [
+        //main
         SizedBox(
           height: screenheightFixed * 502,
           width: screenwidthFixed * 768,
@@ -24,7 +25,7 @@ class _ProductListState extends State<ProductList> {
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 768,
-          color: Color(0xfff4f5f5),
+          color: const Color(0xfff4f5f5),
         ),
         SizedBox(
           height: screenheightFixed * 74,
