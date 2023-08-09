@@ -216,7 +216,7 @@ class _MainScreenState extends State<MainScreen> {
                               color: Colors.white,
                               borderRadius: BorderRadius.circular(20),
                             ),
-                            child: ProductList(),
+                            child: const ProductList(),
                           ),
                         ),
                         SizedBox(
