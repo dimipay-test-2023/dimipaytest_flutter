@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../widget/Productlist.dart';
+import '../widget/product_list.dart';
 
 class SecondContainer extends StatefulWidget {
   const SecondContainer({super.key});
