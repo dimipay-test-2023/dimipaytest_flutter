@@ -131,24 +131,215 @@ class _SecondContainerState extends State<SecondContainer> {
               SizedBox(
                 width: screenwidthFixed * 44,
               ),
+              BottomButtonScroll(),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class BottomButtonScroll extends StatefulWidget {
+  const BottomButtonScroll({super.key});
+
+  @override
+  State<BottomButtonScroll> createState() => _BottomButtonScrollState();
+}
+
+class _BottomButtonScrollState extends State<BottomButtonScroll> {
+  String? selectedValue;
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+
+    return SizedBox(
+      width: screenwidthFixed * 814,
+      height: screenheightFixed * 60,
+      child: Row(
+        //scrollDirection: Axis.horizontal,
+        children: [
+          Row(
+            children: [
               SizedBox(
-                width: screenwidthFixed * 328,
+                width: screenwidthFixed * 340,
                 height: screenheightFixed * 60,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(10),
+                    color: Colors.white,
+                    border: Border.all(color: Color(0xff2ea4ab), width: 3),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: screenwidthFixed * 14,
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 26,
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: true
+                              ? Icon(Icons.visibility_outlined)
+                              : Icon(Icons.visibility_off),
+                          color: Color(0xff4d4fee),
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 5,
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 26,
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            icon: Icon(Icons.delete_outlined),
+                            color: Color(0xffff9493)),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 60,
+                        height: screenheightFixed * 52,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "재고가",
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: screenwidthFixed * 30,
+                            height: screenheightFixed * 24,
+                            child: const TextField(
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                height: 1.0,
+                                color: Color(0xff2ea4ab),
+                                fontFamily: 'Pretendar-Medium',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xff2ea4ab), width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xff2ea4ab), width: 2),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 46,
+                        height: screenheightFixed * 60,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '보다',
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 80,
+                        height: screenheightFixed * 60,
+                        child: Row(
+                          children: [
+                            DropdownButton<String?>(
+                              value: selectedValue,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedValue = newValue;
+                                });
+                                print(newValue);
+                              },
+                              items: [null, 'big', 'small']
+                                  .map<DropdownMenuItem<String?>>(
+                                (String? i) {
+                                  return DropdownMenuItem<String?>(
+                                    value: i,
+                                    child: Text({
+                                          'big': '많은/큰',
+                                          'small': '적은/작은'
+                                        }[i] ??
+                                        '선택'),
+                                  );
+                                },
+                              ).toList(),
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                height: 1.0,
+                                color: Color(0xff2ea4ab),
+                                fontFamily: 'Pretendar-Medium',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              underline: Container(
+                                height: 2,
+                                color: Color(0xff2ea4ab),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 30,
+                        height: screenheightFixed * 60,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '상품',
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
               SizedBox(
                 width: screenwidthFixed * 8,
               ),
               SizedBox(
-                width: screenwidthFixed * 345,
+                width: screenwidthFixed * 380,
                 height: screenheightFixed * 60,
+                child: Container(
+                  color: Colors.white,
+                ),
               ),
               SizedBox(
                 width: screenwidthFixed * 8,
               ),
-              SizedBox(
-                width: screenwidthFixed * 125,
-                height: screenheightFixed * 60,
-              ),
+              // SizedBox(
+              //   width: screenwidthFixed * 400,
+              //   height: screenheightFixed * 60,
+              //   child: Container(
+              //     color: Colors.white,
+              //   ),
+              // ),
             ],
           ),
         ],

@@ -109,18 +109,81 @@ class _ThirdContainerState extends State<ThirdContainer> {
                   SizedBox(
                     height: screenheightFixed * 16,
                   ),
+                  //..
                   SizedBox(
                     width: screenwidthFixed * 260,
-                    height: screenheightFixed * 212,
+                    height: screenheightFixed * 72,
                     child: Container(
                       decoration: BoxDecoration(
-                        color: const Color(0xffd3d5d5),
+                        color: Colors.white,
                         borderRadius: BorderRadius.circular(10),
+                        border: Border.all(
+                            color: const Color(0xff2ea4ab), width: 3),
+                      ),
+                      child: Column(
+                        children: [
+                          SizedBox(
+                            height: screenheightFixed * 10,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: screenwidthFixed * 10,
+                              ),
+                              SizedBox(
+                                width: screenwidthFixed * 22,
+                                height: screenheightFixed * 18,
+                                child: Text(
+                                  textAlign: TextAlign.start,
+                                  '분류',
+                                  style: const TextStyle(
+                                    fontFamily: 'Pretendard-Medium',
+                                    fontWeight: FontWeight.w500,
+                                    fontSize: 14,
+                                    color: Color(0xff4b5656),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                          SizedBox(
+                            height: screenheightFixed * 1,
+                          ),
+                          Row(
+                            children: [
+                              SizedBox(
+                                width: screenwidthFixed * 6,
+                              ),
+                              SizedBox(
+                                width: screenwidthFixed * 150,
+                                height: screenheightFixed * 35,
+                                child: TextButton(
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    minimumSize: Size.zero,
+                                    padding: EdgeInsets.zero,
+                                    tapTargetSize:
+                                        MaterialTapTargetSize.shrinkWrap,
+                                  ),
+                                  child: const Text(
+                                    '분류를 선택해주세요',
+                                    style: TextStyle(
+                                      fontFamily: 'Pretendard-Medium',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 20,
+                                      color: Color(0xff7c8585),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          )
+                        ],
                       ),
                     ),
                   ),
                   SizedBox(
-                    height: screenheightFixed * 16,
+                    height: screenheightFixed * 156,
                   ),
                   SizedBox(
                     width: screenwidthFixed * 260,
