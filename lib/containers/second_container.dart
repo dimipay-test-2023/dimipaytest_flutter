@@ -148,7 +148,9 @@ class BottomButtonScroll extends StatefulWidget {
 }
 
 class _BottomButtonScrollState extends State<BottomButtonScroll> {
-  String? selectedValue;
+  String? selectedValue1;
+  String? selectedValue2;
+  String? selectedValue3;
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -159,8 +161,8 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
     return SizedBox(
       width: screenwidthFixed * 814,
       height: screenheightFixed * 60,
-      child: Row(
-        //scrollDirection: Axis.horizontal,
+      child: ListView(
+        scrollDirection: Axis.horizontal,
         children: [
           Row(
             children: [
@@ -265,10 +267,10 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                         child: Row(
                           children: [
                             DropdownButton<String?>(
-                              value: selectedValue,
+                              value: selectedValue1,
                               onChanged: (String? newValue) {
                                 setState(() {
-                                  selectedValue = newValue;
+                                  selectedValue1 = newValue;
                                 });
                                 print(newValue);
                               },
@@ -324,24 +326,325 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                 width: screenwidthFixed * 8,
               ),
               SizedBox(
-                width: screenwidthFixed * 380,
+                width: screenwidthFixed * 390,
                 height: screenheightFixed * 60,
                 child: Container(
-                  color: Colors.white,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(10),
+                    color: Colors.white,
+                    border: Border.all(color: Color(0xff2ea4ab), width: 3),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: screenwidthFixed * 14,
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 26,
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: true
+                              ? Icon(Icons.visibility_outlined)
+                              : Icon(Icons.visibility_off),
+                          color: Color(0xff4d4fee),
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 5,
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 26,
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            icon: Icon(Icons.delete_outlined),
+                            color: Color(0xffff9493)),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 60,
+                        height: screenheightFixed * 52,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "이름이",
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: screenwidthFixed * 60,
+                            height: screenheightFixed * 24,
+                            child: const TextField(
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                height: 1.0,
+                                color: Color(0xff2ea4ab),
+                                fontFamily: 'Pretendar-Medium',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xff2ea4ab), width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xff2ea4ab), width: 2),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 46,
+                        height: screenheightFixed * 60,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '를',
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 100,
+                        height: screenheightFixed * 60,
+                        child: Row(
+                          children: [
+                            DropdownButton<String?>(
+                              value: selectedValue2,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedValue2 = newValue;
+                                });
+                                print(newValue);
+                              },
+                              items: [null, 'include', 'ninclude']
+                                  .map<DropdownMenuItem<String?>>(
+                                (String? i) {
+                                  return DropdownMenuItem<String?>(
+                                    value: i,
+                                    child: Text({
+                                          'include': '포함하는',
+                                          'ninclude': '포함하지 않는'
+                                        }[i] ??
+                                        '선택'),
+                                  );
+                                },
+                              ).toList(),
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                height: 1.0,
+                                color: Color(0xff2ea4ab),
+                                fontFamily: 'Pretendar-Medium',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              underline: Container(
+                                height: 2,
+                                color: Color(0xff2ea4ab),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 30,
+                        height: screenheightFixed * 60,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '상품',
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
               SizedBox(
                 width: screenwidthFixed * 8,
               ),
-              // SizedBox(
-              //   width: screenwidthFixed * 400,
-              //   height: screenheightFixed * 60,
-              //   child: Container(
-              //     color: Colors.white,
-              //   ),
-              // ),
+              SizedBox(
+                width: screenwidthFixed * 410,
+                height: screenheightFixed * 60,
+                child: Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadiusDirectional.circular(10),
+                    color: Colors.white,
+                    border: Border.all(color: Color(0xff2ea4ab), width: 3),
+                  ),
+                  child: Row(
+                    children: [
+                      SizedBox(
+                        width: screenwidthFixed * 14,
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 26,
+                        child: IconButton(
+                          padding: EdgeInsets.zero,
+                          onPressed: () {},
+                          icon: true
+                              ? Icon(Icons.visibility_outlined)
+                              : Icon(Icons.visibility_off),
+                          color: Color(0xff4d4fee),
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 5,
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 26,
+                        child: IconButton(
+                            padding: EdgeInsets.zero,
+                            onPressed: () {},
+                            icon: Icon(Icons.delete_outlined),
+                            color: Color(0xffff9493)),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 60,
+                        height: screenheightFixed * 52,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              "분류가",
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: screenwidthFixed * 80,
+                            height: screenheightFixed * 24,
+                            child: const TextField(
+                              style: TextStyle(
+                                fontSize: 18.0,
+                                height: 1.0,
+                                color: Color(0xff2ea4ab),
+                                fontFamily: 'Pretendar-Medium',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              decoration: InputDecoration(
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xff2ea4ab), width: 2),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                      color: Color(0xff2ea4ab), width: 2),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 46,
+                        height: screenheightFixed * 60,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '을',
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 100,
+                        height: screenheightFixed * 60,
+                        child: Row(
+                          children: [
+                            DropdownButton<String?>(
+                              value: selectedValue3,
+                              onChanged: (String? newValue) {
+                                setState(() {
+                                  selectedValue3 = newValue;
+                                });
+                                print(newValue);
+                              },
+                              items: [null, 'include', 'ninclude']
+                                  .map<DropdownMenuItem<String?>>(
+                                (String? i) {
+                                  return DropdownMenuItem<String?>(
+                                    value: i,
+                                    child: Text({
+                                          'include': '포함하는',
+                                          'ninclude': '포함하지 않는'
+                                        }[i] ??
+                                        '선택'),
+                                  );
+                                },
+                              ).toList(),
+                              style: const TextStyle(
+                                fontSize: 15.0,
+                                height: 1.0,
+                                color: Color(0xff2ea4ab),
+                                fontFamily: 'Pretendar-Medium',
+                                fontWeight: FontWeight.w500,
+                              ),
+                              underline: Container(
+                                height: 2,
+                                color: Color(0xff2ea4ab),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        width: screenwidthFixed * 30,
+                        height: screenheightFixed * 60,
+                        child: const Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              '상품',
+                              style: TextStyle(
+                                  fontFamily: 'Pretendard-Medium',
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 18),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
+          SizedBox(
+            width: screenwidthFixed * 10,
+          )
         ],
       ),
     );
