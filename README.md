@@ -1,6 +1,6 @@
 # dimipay_performancetest
 
-디미페이 퍼모먼스 테스트입니다.
+디미페이 퍼포먼스 테스트입니다.
 
 ## Getting Started
 
