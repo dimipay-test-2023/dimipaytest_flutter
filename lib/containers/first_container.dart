@@ -41,9 +41,10 @@ class _FirsContainerState extends State<FirsContainer> {
                 const Text(
                   '판매',
                   style: TextStyle(
-                      fontSize: 18,
-                      fontFamily: 'Pretendard-SemiBold',
-                      fontWeight: FontWeight.w600),
+                    fontSize: 18,
+                    fontFamily: 'Pretendard-SemiBold',
+                    fontWeight: FontWeight.w600,
+                  ),
                 ),
                 SizedBox(
                   height: screenheightFixed * 12,
