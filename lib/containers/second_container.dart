@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widget/product_list.dart';
+import 'package:dimipay_performancetest/theme/color_theme.dart';
 
 class SecondContainer extends StatefulWidget {
   const SecondContainer({super.key});
@@ -45,9 +46,19 @@ class _SecondContainerState extends State<SecondContainer> {
               SizedBox(
                 width: screenwidthFixed * 312,
               ),
-              SizedBox(
+              Container(
                 width: screenwidthFixed * 251,
                 height: screenheightFixed * 41,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -69,9 +80,19 @@ class _SecondContainerState extends State<SecondContainer> {
               SizedBox(
                 width: screenwidthFixed * 8,
               ),
-              SizedBox(
+              Container(
                 width: screenheightFixed * 124,
                 height: screenheightFixed * 41,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: DPColors.MainColor.withOpacity(0.5),
+                      spreadRadius: 1,
+                      blurRadius: 10,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -106,7 +127,17 @@ class _SecondContainerState extends State<SecondContainer> {
               SizedBox(
                 width: screenwidthFixed * 44,
               ),
-              SizedBox(
+              Container(
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.5),
+                      spreadRadius: -3,
+                      blurRadius: 10,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
                 height: screenheightFixed * 578,
                 width: screenwidthFixed * 768,
                 child: Container(
@@ -131,7 +162,7 @@ class _SecondContainerState extends State<SecondContainer> {
               SizedBox(
                 width: screenwidthFixed * 44,
               ),
-              BottomButtonScroll(),
+              const BottomButtonScroll(),
             ],
           ),
         ],
@@ -158,168 +189,176 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
 
-    return SizedBox(
+    return Container(
       width: screenwidthFixed * 814,
-      height: screenheightFixed * 60,
+      height: screenheightFixed * 64,
+      decoration: BoxDecoration(
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.4),
+            spreadRadius: 3,
+            blurRadius: 10,
+            offset: const Offset(0, 0),
+          ),
+        ],
+      ),
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
           Row(
             children: [
-              SizedBox(
+              Container(
                 width: screenwidthFixed * 340,
                 height: screenheightFixed * 60,
-                child: Container(
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadiusDirectional.circular(10),
-                    color: Colors.white,
-                    border: Border.all(color: Color(0xff2ea4ab), width: 3),
-                  ),
-                  child: Row(
-                    children: [
-                      SizedBox(
-                        width: screenwidthFixed * 14,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadiusDirectional.circular(10),
+                  color: Colors.white,
+                  border: Border.all(color: const Color(0xff2ea4ab), width: 3),
+                ),
+                child: Row(
+                  children: [
+                    SizedBox(
+                      width: screenwidthFixed * 14,
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 26,
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        onPressed: () {},
+                        icon: true
+                            ? const Icon(Icons.visibility_outlined)
+                            : const Icon(Icons.visibility_off),
+                        color: const Color(0xff4d4fee),
                       ),
-                      SizedBox(
-                        width: screenwidthFixed * 26,
-                        child: IconButton(
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 5,
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 26,
+                      child: IconButton(
                           padding: EdgeInsets.zero,
                           onPressed: () {},
-                          icon: true
-                              ? Icon(Icons.visibility_outlined)
-                              : Icon(Icons.visibility_off),
-                          color: Color(0xff4d4fee),
-                        ),
-                      ),
-                      SizedBox(
-                        width: screenwidthFixed * 5,
-                      ),
-                      SizedBox(
-                        width: screenwidthFixed * 26,
-                        child: IconButton(
-                            padding: EdgeInsets.zero,
-                            onPressed: () {},
-                            icon: Icon(Icons.delete_outlined),
-                            color: Color(0xffff9493)),
-                      ),
-                      SizedBox(
-                        width: screenwidthFixed * 60,
-                        height: screenheightFixed * 52,
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              "재고가",
-                              style: TextStyle(
-                                  fontFamily: 'Pretendard-Medium',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
+                          icon: const Icon(Icons.delete_outlined),
+                          color: const Color(0xffff9493)),
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 60,
+                      height: screenheightFixed * 52,
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SizedBox(
-                            width: screenwidthFixed * 30,
-                            height: screenheightFixed * 24,
-                            child: const TextField(
-                              style: TextStyle(
-                                fontSize: 18.0,
-                                height: 1.0,
-                                color: Color(0xff2ea4ab),
-                                fontFamily: 'Pretendar-Medium',
+                          Text(
+                            "재고가",
+                            style: TextStyle(
+                                fontFamily: 'Pretendard-Medium',
                                 fontWeight: FontWeight.w500,
+                                fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Row(
+                      children: [
+                        SizedBox(
+                          width: screenwidthFixed * 30,
+                          height: screenheightFixed * 24,
+                          child: const TextField(
+                            style: TextStyle(
+                              fontSize: 18.0,
+                              height: 1.0,
+                              color: Color(0xff2ea4ab),
+                              fontFamily: 'Pretendard-Medium',
+                              fontWeight: FontWeight.w500,
+                            ),
+                            decoration: InputDecoration(
+                              enabledBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xff2ea4ab), width: 2),
                               ),
-                              decoration: InputDecoration(
-                                enabledBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Color(0xff2ea4ab), width: 2),
-                                ),
-                                focusedBorder: UnderlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color: Color(0xff2ea4ab), width: 2),
-                                ),
+                              focusedBorder: UnderlineInputBorder(
+                                borderSide: BorderSide(
+                                    color: Color(0xff2ea4ab), width: 2),
                               ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 46,
+                      height: screenheightFixed * 60,
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '보다',
+                            style: TextStyle(
+                                fontFamily: 'Pretendard-Medium',
+                                fontWeight: FontWeight.w500,
+                                fontSize: 18),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 80,
+                      height: screenheightFixed * 60,
+                      child: Row(
+                        children: [
+                          DropdownButton<String?>(
+                            value: selectedValue1,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                selectedValue1 = newValue;
+                              });
+                              print(newValue);
+                            },
+                            items: [null, 'big', 'small']
+                                .map<DropdownMenuItem<String?>>(
+                              (String? i) {
+                                return DropdownMenuItem<String?>(
+                                  value: i,
+                                  child: Text({
+                                        'big': '많은/큰',
+                                        'small': '적은/작은'
+                                      }[i] ??
+                                      '선택'),
+                                );
+                              },
+                            ).toList(),
+                            style: const TextStyle(
+                              fontSize: 15.0,
+                              height: 1.0,
+                              color: Color(0xff2ea4ab),
+                              fontFamily: 'Pretendar-Medium',
+                              fontWeight: FontWeight.w500,
+                            ),
+                            underline: Container(
+                              height: 2,
+                              color: const Color(0xff2ea4ab),
                             ),
                           ),
                         ],
                       ),
-                      SizedBox(
-                        width: screenwidthFixed * 46,
-                        height: screenheightFixed * 60,
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '보다',
-                              style: TextStyle(
-                                  fontFamily: 'Pretendard-Medium',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(
-                        width: screenwidthFixed * 80,
-                        height: screenheightFixed * 60,
-                        child: Row(
-                          children: [
-                            DropdownButton<String?>(
-                              value: selectedValue1,
-                              onChanged: (String? newValue) {
-                                setState(() {
-                                  selectedValue1 = newValue;
-                                });
-                                print(newValue);
-                              },
-                              items: [null, 'big', 'small']
-                                  .map<DropdownMenuItem<String?>>(
-                                (String? i) {
-                                  return DropdownMenuItem<String?>(
-                                    value: i,
-                                    child: Text({
-                                          'big': '많은/큰',
-                                          'small': '적은/작은'
-                                        }[i] ??
-                                        '선택'),
-                                  );
-                                },
-                              ).toList(),
-                              style: const TextStyle(
-                                fontSize: 15.0,
-                                height: 1.0,
-                                color: Color(0xff2ea4ab),
-                                fontFamily: 'Pretendar-Medium',
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 30,
+                      height: screenheightFixed * 60,
+                      child: const Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            '상품',
+                            style: TextStyle(
+                                fontFamily: 'Pretendard-Medium',
                                 fontWeight: FontWeight.w500,
-                              ),
-                              underline: Container(
-                                height: 2,
-                                color: Color(0xff2ea4ab),
-                              ),
-                            ),
-                          ],
-                        ),
+                                fontSize: 18),
+                          ),
+                        ],
                       ),
-                      SizedBox(
-                        width: screenwidthFixed * 30,
-                        height: screenheightFixed * 60,
-                        child: const Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '상품',
-                              style: TextStyle(
-                                  fontFamily: 'Pretendard-Medium',
-                                  fontWeight: FontWeight.w500,
-                                  fontSize: 18),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
               SizedBox(
@@ -332,7 +371,8 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusDirectional.circular(10),
                     color: Colors.white,
-                    border: Border.all(color: Color(0xff2ea4ab), width: 3),
+                    border:
+                        Border.all(color: const Color(0xff2ea4ab), width: 3),
                   ),
                   child: Row(
                     children: [
@@ -345,9 +385,9 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                           padding: EdgeInsets.zero,
                           onPressed: () {},
                           icon: true
-                              ? Icon(Icons.visibility_outlined)
-                              : Icon(Icons.visibility_off),
-                          color: Color(0xff4d4fee),
+                              ? const Icon(Icons.visibility_outlined)
+                              : const Icon(Icons.visibility_off),
+                          color: const Color(0xff4d4fee),
                         ),
                       ),
                       SizedBox(
@@ -358,8 +398,8 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                         child: IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () {},
-                            icon: Icon(Icons.delete_outlined),
-                            color: Color(0xffff9493)),
+                            icon: const Icon(Icons.delete_outlined),
+                            color: const Color(0xffff9493)),
                       ),
                       SizedBox(
                         width: screenwidthFixed * 60,
@@ -455,7 +495,7 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                               ),
                               underline: Container(
                                 height: 2,
-                                color: Color(0xff2ea4ab),
+                                color: const Color(0xff2ea4ab),
                               ),
                             ),
                           ],
@@ -491,7 +531,8 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                   decoration: BoxDecoration(
                     borderRadius: BorderRadiusDirectional.circular(10),
                     color: Colors.white,
-                    border: Border.all(color: Color(0xff2ea4ab), width: 3),
+                    border:
+                        Border.all(color: const Color(0xff2ea4ab), width: 3),
                   ),
                   child: Row(
                     children: [
@@ -504,9 +545,9 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                           padding: EdgeInsets.zero,
                           onPressed: () {},
                           icon: true
-                              ? Icon(Icons.visibility_outlined)
-                              : Icon(Icons.visibility_off),
-                          color: Color(0xff4d4fee),
+                              ? const Icon(Icons.visibility_outlined)
+                              : const Icon(Icons.visibility_off),
+                          color: const Color(0xff4d4fee),
                         ),
                       ),
                       SizedBox(
@@ -517,8 +558,8 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                         child: IconButton(
                             padding: EdgeInsets.zero,
                             onPressed: () {},
-                            icon: Icon(Icons.delete_outlined),
-                            color: Color(0xffff9493)),
+                            icon: const Icon(Icons.delete_outlined),
+                            color: const Color(0xffff9493)),
                       ),
                       SizedBox(
                         width: screenwidthFixed * 60,
@@ -614,7 +655,7 @@ class _BottomButtonScrollState extends State<BottomButtonScroll> {
                               ),
                               underline: Container(
                                 height: 2,
-                                color: Color(0xff2ea4ab),
+                                color: const Color(0xff2ea4ab),
                               ),
                             ),
                           ],

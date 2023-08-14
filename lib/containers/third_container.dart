@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widget/grey_container1.dart';
+import 'package:dimipay_performancetest/theme/color_theme.dart';
 
 class ThirdContainer extends StatefulWidget {
   const ThirdContainer({super.key});
@@ -133,10 +134,10 @@ class _ThirdContainerState extends State<ThirdContainer> {
                               SizedBox(
                                 width: screenwidthFixed * 22,
                                 height: screenheightFixed * 18,
-                                child: Text(
+                                child: const Text(
                                   textAlign: TextAlign.start,
                                   '분류',
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontFamily: 'Pretendard-Medium',
                                     fontWeight: FontWeight.w500,
                                     fontSize: 14,
@@ -185,9 +186,19 @@ class _ThirdContainerState extends State<ThirdContainer> {
                   SizedBox(
                     height: screenheightFixed * 156,
                   ),
-                  SizedBox(
+                  Container(
                     width: screenwidthFixed * 260,
                     height: screenheightFixed * 40,
+                    decoration: BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: DPColors.MainColor.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 10,
+                          offset: const Offset(0, 0),
+                        ),
+                      ],
+                    ),
                     child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                         shape: RoundedRectangleBorder(
