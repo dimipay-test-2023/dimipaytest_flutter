@@ -145,35 +145,36 @@ class _MainListState extends State<MainList> {
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
-    ScrollController scrollController = ScrollController();
+    ScrollController sharedScrollController = ScrollController();
     return SizedBox(
       height: screenheightFixed * 446,
       width: screenwidthFixed * 768,
-      child: ListView.separated(
-        scrollDirection: Axis.vertical,
-        shrinkWrap: true,
-        itemCount: productList.length,
-        itemBuilder: (BuildContext context, int index) {
-          return SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            controller: scrollController,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                ProductCheckBoxFormat(productCheckbox[index]),
-                ProductListFormat(productList[index]),
-                ProductQuantityFormat(productQuantity[index]),
-                ProductPriceFormat(productPrice[index]),
-                ProductCategoryFormat(productCategory[index]),
-                ProductDiscountFormat(productDiscount[index]),
-                ProductBarcodeFormat(productBarcode[index]),
-                ProductEtcFormat(productEtc[index]),
-              ],
-            ),
-          );
-        },
-        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      child: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: SizedBox(
+          width: 20 + screenwidthFixed * 1055,
+          child: ListView.separated(
+            scrollDirection: Axis.vertical,
+            shrinkWrap: true,
+            itemCount: productList.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Row(
+                children: [
+                  ProductCheckBoxFormat(productCheckbox[index]),
+                  ProductListFormat(productList[index]),
+                  ProductQuantityFormat(productQuantity[index]),
+                  ProductPriceFormat(productPrice[index]),
+                  ProductCategoryFormat(productCategory[index]),
+                  ProductDiscountFormat(productDiscount[index]),
+                  ProductBarcodeFormat(productBarcode[index]),
+                  ProductEtcFormat(productEtc[index]),
+                ],
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) =>
+                const Divider(),
+          ),
+        ),
       ),
     );
   }
