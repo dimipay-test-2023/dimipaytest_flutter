@@ -20,20 +20,26 @@ class _ProductListState extends State<ProductList> {
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
     return Column(
       children: [
-        TopBar(),
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Column(
+            children: [
+              const TopBar(),
+              Container(
+                height: screenheightFixed * 2,
+                width: screenwidthFixed * 750,
+                color: const Color(0xfff4f5f5),
+              ),
+              const MainList(),
+            ],
+          ),
+        ),
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 750,
           color: const Color(0xfff4f5f5),
         ),
-        //main
-        MainList(),
-        Container(
-          height: screenheightFixed * 2,
-          width: screenwidthFixed * 750,
-          color: const Color(0xfff4f5f5),
-        ),
-        BottomButton(),
+        const BottomButton(),
       ],
     );
   }
@@ -71,8 +77,12 @@ class _TopBarState extends State<TopBar> {
               SizedBox(
                 width: screenwidthFixed * 12,
               ),
-              CheckBox1(
-                click: false,
+              SizedBox(
+                width: 20,
+                height: 20,
+                child: CheckBox1(
+                  click: false,
+                ),
               ),
 
               SizedBox(
@@ -80,60 +90,61 @@ class _TopBarState extends State<TopBar> {
               ),
               Row(
                 children: [
-                  const SizedBox(
-                    child: Text(
-                      '이름',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
+                  SizedBox(
+                    width: screenwidthFixed * 260,
+                    child: const SizedBox(
+                      child: Text(
+                        '이름',
+                        style: TextStyle(
+                            color: Color(0xff7c8585),
+                            fontFamily: 'Pretendard-Medium',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    width: screenwidthFixed * 222,
-                  ),
-                  const SizedBox(
-                    child: Text(
-                      '수량',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
+                    width: screenwidthFixed * 98,
+                    child: const SizedBox(
+                      child: Text(
+                        '수량',
+                        style: TextStyle(
+                            color: Color(0xff7c8585),
+                            fontFamily: 'Pretendard-Medium',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    width: screenwidthFixed * 58,
-                  ),
-                  const SizedBox(
-                    child: Text(
-                      '정가',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
+                    width: screenwidthFixed * 98,
+                    child: const SizedBox(
+                      child: Text(
+                        '정가',
+                        style: TextStyle(
+                            color: Color(0xff7c8585),
+                            fontFamily: 'Pretendard-Medium',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    width: screenwidthFixed * 80,
-                  ),
-                  const SizedBox(
-                    child: Text(
-                      '분류',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
+                    width: screenwidthFixed * 119,
+                    child: const SizedBox(
+                      child: Text(
+                        '분류',
+                        style: TextStyle(
+                            color: Color(0xff7c8585),
+                            fontFamily: 'Pretendard-Medium',
+                            fontWeight: FontWeight.w500,
+                            fontSize: 18),
+                      ),
                     ),
                   ),
                   SizedBox(
-                    width: screenwidthFixed * 82,
-                  ),
-                  const SizedBox(
-                    child: Text(
+                    width: screenwidthFixed * 152,
+                    child: const Text(
                       '할인정책',
                       style: TextStyle(
                           color: Color(0xff7c8585),
@@ -143,10 +154,8 @@ class _TopBarState extends State<TopBar> {
                     ),
                   ),
                   SizedBox(
-                    width: screenwidthFixed * 100,
-                  ),
-                  const SizedBox(
-                    child: Text(
+                    width: screenwidthFixed * 152,
+                    child: const Text(
                       '바코드',
                       style: TextStyle(
                           color: Color(0xff7c8585),
@@ -156,10 +165,8 @@ class _TopBarState extends State<TopBar> {
                     ),
                   ),
                   SizedBox(
-                    width: screenwidthFixed * 100,
-                  ),
-                  const SizedBox(
-                    child: Text(
+                    width: screenwidthFixed * 152,
+                    child: const Text(
                       '#',
                       style: TextStyle(
                           color: Color(0xff7c8585),
@@ -167,9 +174,6 @@ class _TopBarState extends State<TopBar> {
                           fontWeight: FontWeight.w500,
                           fontSize: 18),
                     ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 150,
                   ),
                 ],
               )
