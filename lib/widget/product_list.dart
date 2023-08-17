@@ -18,15 +18,16 @@ class _ProductListState extends State<ProductList> {
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    ScrollController sharedScrollController = ScrollController();
     return Column(
       children: [
-        const TopBar(),
+        TopBar(sharedcontroller: sharedScrollController),
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 750,
           color: const Color(0xfff4f5f5),
         ),
-        const MainList(),
+        MainList(sharedcontroller: sharedScrollController),
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 750,
@@ -39,13 +40,13 @@ class _ProductListState extends State<ProductList> {
 }
 
 class TopBar extends StatefulWidget {
-  const TopBar({super.key});
+  const TopBar({Key? key, required this.sharedcontroller}) : super(key: key);
+
+  final ScrollController sharedcontroller;
 
   @override
   State<TopBar> createState() => _TopBarState();
 }
-
-//..
 
 class _TopBarState extends State<TopBar> {
   @override
@@ -63,31 +64,83 @@ class _TopBarState extends State<TopBar> {
           height: screenheightFixed * 36,
           width: screenwidthFixed * 768,
           //listview
-          child: ListView(
+          child: SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            children: [
-              // width 12
-              SizedBox(
-                width: screenwidthFixed * 12,
-              ),
-              SizedBox(
-                width: 20,
-                height: 20,
-                child: CheckBox1(
-                  click: false,
+            controller: widget.sharedcontroller,
+            child: Row(
+              children: [
+                // width 12
+                SizedBox(
+                  width: screenwidthFixed * 12,
                 ),
-              ),
-
-              SizedBox(
-                width: screenwidthFixed * 12,
-              ),
-              Row(
-                children: [
-                  SizedBox(
-                    width: screenwidthFixed * 260,
-                    child: const SizedBox(
-                      child: Text(
-                        '이름',
+                SizedBox(
+                  width: 20,
+                  height: 20,
+                  child: CheckBox1(
+                    click: false,
+                  ),
+                ),
+                SizedBox(
+                  width: screenwidthFixed * 12,
+                ),
+                Row(
+                  children: [
+                    SizedBox(
+                      width: screenwidthFixed * 260,
+                      child: const SizedBox(
+                        child: Text(
+                          '이름',
+                          style: TextStyle(
+                              color: Color(0xff7c8585),
+                              fontFamily: 'Pretendard-Medium',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 98,
+                      child: const SizedBox(
+                        child: Text(
+                          '수량',
+                          style: TextStyle(
+                              color: Color(0xff7c8585),
+                              fontFamily: 'Pretendard-Medium',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 98,
+                      child: const SizedBox(
+                        child: Text(
+                          '정가',
+                          style: TextStyle(
+                              color: Color(0xff7c8585),
+                              fontFamily: 'Pretendard-Medium',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 119,
+                      child: const SizedBox(
+                        child: Text(
+                          '분류',
+                          style: TextStyle(
+                              color: Color(0xff7c8585),
+                              fontFamily: 'Pretendard-Medium',
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18),
+                        ),
+                      ),
+                    ),
+                    SizedBox(
+                      width: screenwidthFixed * 152,
+                      child: const Text(
+                        '할인정책',
                         style: TextStyle(
                             color: Color(0xff7c8585),
                             fontFamily: 'Pretendard-Medium',
@@ -95,12 +148,10 @@ class _TopBarState extends State<TopBar> {
                             fontSize: 18),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 98,
-                    child: const SizedBox(
-                      child: Text(
-                        '수량',
+                    SizedBox(
+                      width: screenwidthFixed * 152,
+                      child: const Text(
+                        '바코드',
                         style: TextStyle(
                             color: Color(0xff7c8585),
                             fontFamily: 'Pretendard-Medium',
@@ -108,12 +159,10 @@ class _TopBarState extends State<TopBar> {
                             fontSize: 18),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 98,
-                    child: const SizedBox(
-                      child: Text(
-                        '정가',
+                    SizedBox(
+                      width: screenwidthFixed * 152,
+                      child: const Text(
+                        '#',
                         style: TextStyle(
                             color: Color(0xff7c8585),
                             fontFamily: 'Pretendard-Medium',
@@ -121,56 +170,10 @@ class _TopBarState extends State<TopBar> {
                             fontSize: 18),
                       ),
                     ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 119,
-                    child: const SizedBox(
-                      child: Text(
-                        '분류',
-                        style: TextStyle(
-                            color: Color(0xff7c8585),
-                            fontFamily: 'Pretendard-Medium',
-                            fontWeight: FontWeight.w500,
-                            fontSize: 18),
-                      ),
-                    ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 152,
-                    child: const Text(
-                      '할인정책',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 152,
-                    child: const Text(
-                      '바코드',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
-                    ),
-                  ),
-                  SizedBox(
-                    width: screenwidthFixed * 152,
-                    child: const Text(
-                      '#',
-                      style: TextStyle(
-                          color: Color(0xff7c8585),
-                          fontFamily: 'Pretendard-Medium',
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18),
-                    ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                )
+              ],
+            ),
           ),
         ),
         SizedBox(

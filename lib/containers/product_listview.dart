@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:dimipay_performancetest/theme/text_theme.dart';
 
 class MainList extends StatefulWidget {
-  const MainList({super.key});
+  const MainList({Key? key, required this.sharedcontroller}) : super(key: key);
 
+  final ScrollController sharedcontroller;
   @override
   State<MainList> createState() => _MainListState();
 }
@@ -11,7 +12,6 @@ class MainList extends StatefulWidget {
 class _MainListState extends State<MainList> {
   @override
   Widget build(BuildContext context) {
-    int listlength = 14;
     List<String> productList = [
       '초코에몽',
       '닭다리(후라이드)',
@@ -145,11 +145,11 @@ class _MainListState extends State<MainList> {
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
-    ScrollController sharedScrollController = ScrollController();
     return SizedBox(
       height: screenheightFixed * 446,
       width: screenwidthFixed * 768,
       child: SingleChildScrollView(
+        controller: widget.sharedcontroller,
         scrollDirection: Axis.horizontal,
         child: SizedBox(
           width: 20 + screenwidthFixed * 1055,
