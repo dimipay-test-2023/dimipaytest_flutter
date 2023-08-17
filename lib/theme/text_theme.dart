@@ -19,4 +19,10 @@ abstract class DPTextTheme {
     fontFamily: 'Pretendard',
     fontWeight: FontWeight.w600,
   );
+  static const MainList = TextStyle(
+    color: Colors.black,
+    fontSize: 20,
+    fontFamily: 'Pretendard',
+    fontWeight: FontWeight.w600,
+  );
 }

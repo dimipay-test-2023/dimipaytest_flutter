@@ -106,6 +106,7 @@ class _MainListState extends State<MainList> {
       8801043037535,
       8809019607912,
       8801882885428,
+      880188288590,
     ];
     List<String> productEtc = [
       '적용 예정(개별)',
@@ -144,6 +145,7 @@ class _MainListState extends State<MainList> {
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    ScrollController scrollController = ScrollController();
     return SizedBox(
       height: screenheightFixed * 446,
       width: screenwidthFixed * 768,
@@ -154,12 +156,19 @@ class _MainListState extends State<MainList> {
         itemBuilder: (BuildContext context, int index) {
           return SingleChildScrollView(
             scrollDirection: Axis.horizontal,
+            controller: scrollController,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 ProductCheckBoxFormat(productCheckbox[index]),
                 ProductListFormat(productList[index]),
+                ProductQuantityFormat(productQuantity[index]),
+                ProductPriceFormat(productPrice[index]),
+                ProductCategoryFormat(productCategory[index]),
+                ProductDiscountFormat(productDiscount[index]),
+                ProductBarcodeFormat(productBarcode[index]),
+                ProductEtcFormat(productEtc[index]),
               ],
             ),
           );
@@ -226,6 +235,178 @@ class ProductListFormat extends StatelessWidget {
         children: [
           Text(
             productName,
+            style: DPTextTheme.MainList,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductQuantityFormat extends StatelessWidget {
+  final int productQuantity;
+  const ProductQuantityFormat(this.productQuantity, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 98,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Text(
+                productQuantity.toString(),
+                style: DPTextTheme.MainList,
+              ),
+              const Text(
+                '개',
+                style: DPTextTheme.MainList,
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductPriceFormat extends StatelessWidget {
+  final int productPrice;
+  const ProductPriceFormat(this.productPrice, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 98,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Row(
+            children: [
+              Text(
+                productPrice.toString(),
+                style: DPTextTheme.MainList,
+              ),
+              const Text(
+                '원',
+                style: DPTextTheme.MainList,
+              )
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductCategoryFormat extends StatelessWidget {
+  final String productCategory;
+  const ProductCategoryFormat(this.productCategory, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 119,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            productCategory,
+            style: DPTextTheme.MainList,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductDiscountFormat extends StatelessWidget {
+  final String productDiscount;
+  const ProductDiscountFormat(this.productDiscount, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 152,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            productDiscount,
+            style: DPTextTheme.MainList,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductBarcodeFormat extends StatelessWidget {
+  final int productBarcode;
+  const ProductBarcodeFormat(this.productBarcode, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 152,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            productBarcode.toString(),
+            style: DPTextTheme.MainList,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class ProductEtcFormat extends StatelessWidget {
+  final String productEtc;
+  const ProductEtcFormat(this.productEtc, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 152,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            productEtc,
             style: DPTextTheme.MainList,
           ),
         ],

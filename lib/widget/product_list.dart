@@ -20,20 +20,13 @@ class _ProductListState extends State<ProductList> {
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
     return Column(
       children: [
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Column(
-            children: [
-              const TopBar(),
-              Container(
-                height: screenheightFixed * 2,
-                width: screenwidthFixed * 750,
-                color: const Color(0xfff4f5f5),
-              ),
-              const MainList(),
-            ],
-          ),
+        const TopBar(),
+        Container(
+          height: screenheightFixed * 2,
+          width: screenwidthFixed * 750,
+          color: const Color(0xfff4f5f5),
         ),
+        const MainList(),
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 750,
