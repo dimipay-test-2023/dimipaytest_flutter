@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:dimipay_performancetest/theme/text_theme.dart';
 
 class MainList extends StatefulWidget {
   const MainList({super.key});
@@ -10,7 +11,7 @@ class MainList extends StatefulWidget {
 class _MainListState extends State<MainList> {
   @override
   Widget build(BuildContext context) {
-    int cnt = 14;
+    int listlength = 14;
     List<String> productList = [
       '초코에몽',
       '닭다리(후라이드)',
@@ -122,6 +123,23 @@ class _MainListState extends State<MainList> {
       '',
       '적용중(개별)',
     ];
+    List<bool> productCheckbox = [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ];
+
     // ignore: unused_local_variable
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
@@ -129,7 +147,89 @@ class _MainListState extends State<MainList> {
     return SizedBox(
       height: screenheightFixed * 446,
       width: screenwidthFixed * 768,
-      child: Row(),
+      child: ListView.separated(
+        scrollDirection: Axis.vertical,
+        shrinkWrap: true,
+        itemCount: productList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                ProductCheckBoxFormat(productCheckbox[index]),
+                ProductListFormat(productList[index]),
+              ],
+            ),
+          );
+        },
+        separatorBuilder: (BuildContext context, int index) => const Divider(),
+      ),
+    );
+  }
+}
+
+class ProductCheckBoxFormat extends StatefulWidget {
+  final bool productcheckboxstatus;
+  const ProductCheckBoxFormat(this.productcheckboxstatus, {super.key});
+
+  @override
+  State<ProductCheckBoxFormat> createState() => _ProductCheckBoxFormatState();
+}
+
+class _ProductCheckBoxFormatState extends State<ProductCheckBoxFormat> {
+  bool productcheckboxstatus = false;
+
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return Row(
+      children: [
+        SizedBox(width: screenwidthFixed * 12),
+        SizedBox(
+          width: 20,
+          height: 20,
+          child: Checkbox(
+            value: productcheckboxstatus,
+            onChanged: (value) {
+              setState(() {
+                productcheckboxstatus = value ?? false;
+              });
+            },
+          ),
+        ),
+        SizedBox(width: screenwidthFixed * 12),
+      ],
+    );
+  }
+}
+
+class ProductListFormat extends StatelessWidget {
+  final String productName;
+  const ProductListFormat(this.productName, {super.key});
+  @override
+  Widget build(BuildContext context) {
+    // ignore: unused_local_variable
+    double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
+    // ignore: unused_local_variable
+    double screenheightFixed = MediaQuery.of(context).size.height / 803;
+    return SizedBox(
+      width: screenwidthFixed * 260,
+      height: screenheightFixed * 54,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            productName,
+            style: DPTextTheme.MainList,
+          ),
+        ],
+      ),
     );
   }
 }
