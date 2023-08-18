@@ -200,16 +200,31 @@ class _ProductCheckBoxFormatState extends State<ProductCheckBoxFormat> {
     return Row(
       children: [
         SizedBox(width: screenwidthFixed * 12),
-        SizedBox(
+        Container(
           width: 20,
           height: 20,
-          child: Checkbox(
-            value: productcheckboxstatus,
-            onChanged: (value) {
-              setState(() {
-                productcheckboxstatus = value ?? false;
-              });
-            },
+          decoration: BoxDecoration(
+            border: Border.all(
+              width: 2,
+              color: productcheckboxstatus
+                  ? const Color(0xFF2EA4AB)
+                  : const Color(0xFFD7D9D9),
+            ),
+          ),
+          child: Theme(
+            data: Theme.of(context).copyWith(
+              unselectedWidgetColor: const Color(0xFFD9D9D9),
+            ),
+            child: Checkbox(
+              value: productcheckboxstatus,
+              onChanged: (value) {
+                setState(() {
+                  productcheckboxstatus = value ?? false;
+                });
+              },
+              checkColor: const Color(0xFF2EA4AB),
+              activeColor: Colors.white,
+            ),
           ),
         ),
         SizedBox(width: screenwidthFixed * 12),
