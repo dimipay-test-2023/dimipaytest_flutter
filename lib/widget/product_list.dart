@@ -5,29 +5,54 @@ import 'package:flutter/material.dart';
 //768*578 = 768 504:2:72
 
 class ProductList extends StatefulWidget {
-  const ProductList({super.key});
+  const ProductList({Key? key}) : super(key: key);
 
   @override
   State<ProductList> createState() => _ProductListState();
 }
 
 class _ProductListState extends State<ProductList> {
+  final _controller1 = ScrollController();
+  final _controller2 = ScrollController();
+  @override
+  void initState() {
+    super.initState();
+    _controller1.addListener(listener1);
+    _controller2.addListener(listener2);
+  }
+
+  var _flag1 = false;
+  var _flag2 = false;
+
+  void listener1() {
+    if (_flag2) return;
+    _flag1 = true;
+    _controller2.jumpTo(_controller1.offset);
+    _flag1 = false;
+  }
+
+  void listener2() {
+    if (_flag1) return;
+    _flag2 = true;
+    _controller1.jumpTo(_controller2.offset);
+    _flag2 = false;
+  }
+
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
-    ScrollController sharedScrollController = ScrollController();
     return Column(
       children: [
-        TopBar(sharedcontroller: sharedScrollController),
+        TopBar(sharedcontroller: _controller1),
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 750,
           color: const Color(0xfff4f5f5),
         ),
-        MainList(sharedcontroller: sharedScrollController),
+        MainList(sharedcontroller: _controller2),
         Container(
           height: screenheightFixed * 2,
           width: screenwidthFixed * 750,
