@@ -1,5 +1,7 @@
 import 'package:dimipay_performancetest/containers/product_listview.dart';
-import 'package:dimipay_performancetest/widget/check_box.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
+import 'dart:convert';
 import 'package:flutter/material.dart';
 
 //768*578 = 768 504:2:72
@@ -74,6 +76,7 @@ class TopBar extends StatefulWidget {
 }
 
 class _TopBarState extends State<TopBar> {
+  bool allselectchekcbox = false;
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
@@ -101,8 +104,35 @@ class _TopBarState extends State<TopBar> {
                 SizedBox(
                   width: 20,
                   height: 20,
-                  child: CheckBox1(
-                    click: false,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(
+                        width: 2,
+                        color: allselectchekcbox
+                            ? const Color(0xFF2EA4AB)
+                            : const Color(0xFFD7D9D9),
+                      ),
+                    ),
+                    child: Theme(
+                      data: Theme.of(context).copyWith(
+                        unselectedWidgetColor: const Color(0xFFD9D9D9),
+                      ),
+                      child: Checkbox(
+                        value: allselectchekcbox,
+                        onChanged: (value) async {
+                          setState(() {
+                            allselectchekcbox = !allselectchekcbox;
+                          });
+                          if (allselectchekcbox == true) {
+                            await allcheckboxOn();
+                          } else {
+                            await allcheckboxOff();
+                          }
+                        },
+                        checkColor: const Color(0xFF2EA4AB),
+                        activeColor: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
                 SizedBox(
@@ -287,4 +317,26 @@ class _BottomButtonState extends State<BottomButton> {
       ),
     );
   }
+}
+
+Future<void> allcheckboxOn() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final String checkboxJson = prefs.getString('productCheckbox')!;
+  List checkboxList = jsonDecode(checkboxJson);
+  for (int i = 0; i < checkboxList.length; i++) {
+    checkboxList[i] = true;
+  }
+  prefs.setString('productCheckbox', json.encode(checkboxList));
+  return;
+}
+
+Future<void> allcheckboxOff() async {
+  final SharedPreferences prefs = await SharedPreferences.getInstance();
+  final String checkboxJson = prefs.getString('productCheckbox')!;
+  List checkboxList = jsonDecode(checkboxJson);
+  for (int i = 0; i < checkboxList.length; i++) {
+    checkboxList[i] = false;
+  }
+  prefs.setString('productCheckbox', json.encode(checkboxList));
+  return;
 }
