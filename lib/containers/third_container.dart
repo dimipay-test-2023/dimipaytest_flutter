@@ -21,6 +21,27 @@ class _ThirdContainerState extends State<ThirdContainer> {
   bool isbarcodeclicked = false;
   bool iscategoryclicked = false;
 
+  final TextEditingController _textEditingController1 = TextEditingController();
+  final TextEditingController _textEditingController2 = TextEditingController();
+  final TextEditingController _textEditingController3 = TextEditingController();
+  final TextEditingController _textEditingController4 = TextEditingController();
+
+  void clearTextField() {
+    _textEditingController1.clear();
+    _textEditingController2.clear();
+    _textEditingController3.clear();
+    _textEditingController4.clear();
+  }
+
+  @override
+  void dispose() {
+    _textEditingController1.dispose();
+    _textEditingController2.dispose();
+    _textEditingController3.dispose();
+    _textEditingController4.dispose();
+    super.dispose();
+  }
+
   void nametapped() {
     setState(() {
       isnameclicked = true;
@@ -181,6 +202,7 @@ class _ThirdContainerState extends State<ThirdContainer> {
                               width: screenwidthFixed * 232,
                               height: screenheightFixed * 20,
                               child: TextField(
+                                controller: _textEditingController1,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none),
                                 onChanged: (value) {
@@ -189,7 +211,7 @@ class _ThirdContainerState extends State<ThirdContainer> {
                                   });
                                 },
                               ),
-                            )
+                            ),
                           ],
                         ),
                       ),
@@ -263,6 +285,7 @@ class _ThirdContainerState extends State<ThirdContainer> {
                               width: screenwidthFixed * 232,
                               height: screenheightFixed * 20,
                               child: TextField(
+                                controller: _textEditingController2,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none),
                                 onChanged: (value) {
@@ -330,6 +353,7 @@ class _ThirdContainerState extends State<ThirdContainer> {
                               width: screenwidthFixed * 232,
                               height: screenheightFixed * 20,
                               child: TextField(
+                                controller: _textEditingController3,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none),
                                 onChanged: (value) {
@@ -399,6 +423,7 @@ class _ThirdContainerState extends State<ThirdContainer> {
                               width: screenwidthFixed * 232,
                               height: screenheightFixed * 20,
                               child: TextField(
+                                controller: _textEditingController4,
                                 decoration: const InputDecoration(
                                     border: InputBorder.none),
                                 onChanged: (value) {
@@ -454,6 +479,7 @@ class _ThirdContainerState extends State<ThirdContainer> {
                             productbarcode_new = null;
                             productcost_new = null;
                           });
+                          clearTextField();
                         } else {
                           Get.snackbar(
                             '알림',
