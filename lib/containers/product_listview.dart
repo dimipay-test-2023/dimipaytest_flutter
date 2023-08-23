@@ -38,6 +38,7 @@ class _MainListState extends State<MainList> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String productPriceString = prefs.getString('productPrice') ?? '[]';
 
+    print(json.decode(productPriceString));
     setState(() {
       productPrice = List<int>.from(json.decode(productPriceString));
     });
