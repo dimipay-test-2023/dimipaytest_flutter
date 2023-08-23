@@ -24,14 +24,6 @@ class _MainListState extends State<MainList> {
   @override
   void initState() {
     super.initState();
-    loadProductList();
-    loadProductPrice();
-    loadProductQuantity();
-    loadProductCategory();
-    loadProductDiscount();
-    loadProductBarcode();
-    loadProductEtc();
-    loadProductCheckbox();
   }
 
   Future<void> loadProductList() async {
@@ -46,7 +38,6 @@ class _MainListState extends State<MainList> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String productPriceString = prefs.getString('productPrice') ?? '[]';
 
-    print(json.decode(productPriceString));
     setState(() {
       productPrice = List<int>.from(json.decode(productPriceString));
     });
@@ -114,26 +105,40 @@ class _MainListState extends State<MainList> {
         scrollDirection: Axis.horizontal,
         child: SizedBox(
           width: 20 + screenwidthFixed * 1055,
-          child: ListView.separated(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            itemCount: productList.length,
-            itemBuilder: (BuildContext context, int index) {
-              return Row(
-                children: [
-                  ProductCheckBoxFormat(productCheckbox[index]),
-                  ProductListFormat(productList[index]),
-                  ProductQuantityFormat(productQuantity[index]),
-                  ProductPriceFormat(productPrice[index]),
-                  ProductCategoryFormat(productCategory[index]),
-                  ProductDiscountFormat(productDiscount[index]),
-                  ProductBarcodeFormat(productBarcode[index]),
-                  ProductEtcFormat(productEtc[index]),
-                ],
+          child: FutureBuilder(
+            future: () async {
+              await loadProductList();
+              await loadProductPrice();
+              await loadProductQuantity();
+              await loadProductCategory();
+              await loadProductDiscount();
+              await loadProductBarcode();
+              await loadProductEtc();
+              await loadProductCheckbox();
+            }(),
+            builder: (context, snapshot) {
+              return ListView.separated(
+                scrollDirection: Axis.vertical,
+                shrinkWrap: true,
+                itemCount: productList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Row(
+                    children: [
+                      ProductCheckBoxFormat(productCheckbox[index]),
+                      ProductListFormat(productList[index]),
+                      ProductQuantityFormat(productQuantity[index]),
+                      ProductPriceFormat(productPrice[index]),
+                      ProductCategoryFormat(productCategory[index]),
+                      ProductDiscountFormat(productDiscount[index]),
+                      ProductBarcodeFormat(productBarcode[index]),
+                      ProductEtcFormat(productEtc[index]),
+                    ],
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) =>
+                    const Divider(),
               );
             },
-            separatorBuilder: (BuildContext context, int index) =>
-                const Divider(),
           ),
         ),
       ),

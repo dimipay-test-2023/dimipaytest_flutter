@@ -448,6 +448,12 @@ class _ThirdContainerState extends State<ThirdContainer> {
                             barcode: productbarcode_new!,
                             category: productcategory_new!,
                           );
+                          setState(() {
+                            productname_new = null;
+                            productcategory_new = null;
+                            productbarcode_new = null;
+                            productcost_new = null;
+                          });
                         } else {
                           Get.snackbar(
                             '알림',

@@ -43,6 +43,13 @@ class _SecondContainerState extends State<SecondContainer> {
                       fontWeight: FontWeight.w600),
                 ),
               ),
+              IconButton(
+                  icon: const Icon(Icons.restart_alt_sharp),
+                  iconSize: 30,
+                  color: Colors.black,
+                  onPressed: () {
+                    setState(() {});
+                  }),
               SizedBox(
                 width: screenwidthFixed * 312,
               ),
