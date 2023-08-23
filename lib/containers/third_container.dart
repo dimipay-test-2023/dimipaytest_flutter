@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import '../widget/grey_container1.dart';
 import 'package:dimipay_performancetest/theme/color_theme.dart';
+import 'package:dimipay_performancetest/functions/addinfo.dart';
+import 'package:get/get.dart';
 
 class ThirdContainer extends StatefulWidget {
   const ThirdContainer({super.key});
@@ -10,12 +11,59 @@ class ThirdContainer extends StatefulWidget {
 }
 
 class _ThirdContainerState extends State<ThirdContainer> {
+  String? productname_new;
+  int? productcost_new;
+  int? productbarcode_new;
+  String? productcategory_new;
+
+  bool isnameclicked = false;
+  bool ispriceclicked = false;
+  bool isbarcodeclicked = false;
+  bool iscategoryclicked = false;
+
+  void nametapped() {
+    setState(() {
+      isnameclicked = true;
+      ispriceclicked = false;
+      isbarcodeclicked = false;
+      iscategoryclicked = false;
+    });
+  }
+
+  void pricetapped() {
+    setState(() {
+      isnameclicked = false;
+      ispriceclicked = true;
+      isbarcodeclicked = false;
+      iscategoryclicked = false;
+    });
+  }
+
+  void barcodetapped() {
+    setState(() {
+      isnameclicked = false;
+      ispriceclicked = false;
+      isbarcodeclicked = true;
+      iscategoryclicked = false;
+    });
+  }
+
+  void categorytapped() {
+    setState(() {
+      isnameclicked = false;
+      ispriceclicked = false;
+      isbarcodeclicked = false;
+      iscategoryclicked = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // ignore: unused_local_variable
     double screenwidthFixed = MediaQuery.of(context).size.width / 1422;
     // ignore: unused_local_variable
     double screenheightFixed = MediaQuery.of(context).size.height / 803;
+
     return Row(
       children: [
         SizedBox(width: screenwidthFixed * 28),
@@ -83,7 +131,70 @@ class _ThirdContainerState extends State<ThirdContainer> {
                   SizedBox(
                     height: screenheightFixed * 17,
                   ),
-                  const GreyContainer1(topText: '상품이름'),
+                  GestureDetector(
+                    onTap: nametapped,
+                    child: SizedBox(
+                      width: screenwidthFixed * 260,
+                      height: screenheightFixed * 72,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: isnameclicked
+                              ? const Color(0xFFFFFFFF)
+                              : const Color(0xfff4f5f5),
+                          border: Border.all(
+                              color: isnameclicked
+                                  ? DPColors.MainColor
+                                  : const Color(0xffd3d5d5),
+                              width: 3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: screenheightFixed * 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: screenwidthFixed * 10,
+                                ),
+                                SizedBox(
+                                  width: screenwidthFixed * 52,
+                                  height: screenheightFixed * 22,
+                                  child: const Text(
+                                    textAlign: TextAlign.start,
+                                    '상품 이름',
+                                    style: TextStyle(
+                                      fontFamily: 'Pretendard-Medium',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: Color(0xff878787),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: screenheightFixed * 5,
+                            ),
+                            SizedBox(
+                              width: screenwidthFixed * 232,
+                              height: screenheightFixed * 20,
+                              child: TextField(
+                                decoration: const InputDecoration(
+                                    border: InputBorder.none),
+                                onChanged: (value) {
+                                  setState(() {
+                                    productname_new = value;
+                                  });
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: screenheightFixed * 6,
                   ),
@@ -102,84 +213,203 @@ class _ThirdContainerState extends State<ThirdContainer> {
                   SizedBox(
                     height: screenheightFixed * 20,
                   ),
-                  const GreyContainer1(topText: '단가'),
+                  GestureDetector(
+                    onTap: pricetapped,
+                    child: SizedBox(
+                      width: screenwidthFixed * 260,
+                      height: screenheightFixed * 72,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: ispriceclicked
+                              ? const Color(0xFFFFFFFF)
+                              : const Color(0xfff4f5f5),
+                          border: Border.all(
+                              color: ispriceclicked
+                                  ? DPColors.MainColor
+                                  : const Color(0xffd3d5d5),
+                              width: 3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: screenheightFixed * 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: screenwidthFixed * 10,
+                                ),
+                                SizedBox(
+                                  width: screenwidthFixed * 52,
+                                  height: screenheightFixed * 22,
+                                  child: const Text(
+                                    textAlign: TextAlign.start,
+                                    '단가',
+                                    style: TextStyle(
+                                      fontFamily: 'Pretendard-Medium',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: Color(0xff878787),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: screenheightFixed * 5,
+                            ),
+                            SizedBox(
+                              width: screenwidthFixed * 232,
+                              height: screenheightFixed * 20,
+                              child: TextField(
+                                decoration: const InputDecoration(
+                                    border: InputBorder.none),
+                                onChanged: (value) {
+                                  setState(() {
+                                    productcost_new = int.tryParse(value);
+                                  });
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: screenheightFixed * 16,
                   ),
-                  const GreyContainer1(topText: '바코드'),
+                  GestureDetector(
+                    onTap: barcodetapped,
+                    child: SizedBox(
+                      width: screenwidthFixed * 260,
+                      height: screenheightFixed * 72,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: isbarcodeclicked
+                              ? const Color(0xFFFFFFFF)
+                              : const Color(0xfff4f5f5),
+                          border: Border.all(
+                              color: isbarcodeclicked
+                                  ? DPColors.MainColor
+                                  : const Color(0xffd3d5d5),
+                              width: 3),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: screenheightFixed * 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: screenwidthFixed * 10,
+                                ),
+                                SizedBox(
+                                  width: screenwidthFixed * 52,
+                                  height: screenheightFixed * 22,
+                                  child: const Text(
+                                    textAlign: TextAlign.start,
+                                    '바코드',
+                                    style: TextStyle(
+                                      fontFamily: 'Pretendard-Medium',
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: 14,
+                                      color: Color(0xff878787),
+                                    ),
+                                  ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: screenheightFixed * 5,
+                            ),
+                            SizedBox(
+                              width: screenwidthFixed * 232,
+                              height: screenheightFixed * 20,
+                              child: TextField(
+                                decoration: const InputDecoration(
+                                    border: InputBorder.none),
+                                onChanged: (value) {
+                                  setState(() {
+                                    productbarcode_new = int.tryParse(value);
+                                  });
+                                },
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                   SizedBox(
                     height: screenheightFixed * 16,
                   ),
                   //..
-                  SizedBox(
-                    width: screenwidthFixed * 260,
-                    height: screenheightFixed * 72,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(
-                            color: const Color(0xff2ea4ab), width: 3),
-                      ),
-                      child: Column(
-                        children: [
-                          SizedBox(
-                            height: screenheightFixed * 10,
+                  GestureDetector(
+                    onTap: categorytapped,
+                    child: SizedBox(
+                      width: screenwidthFixed * 260,
+                      height: screenheightFixed * 72,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: iscategoryclicked
+                              ? const Color(0xFFFFFFFF)
+                              : const Color(0xfff4f5f5),
+                          border: Border.all(
+                            color: iscategoryclicked
+                                ? DPColors.MainColor
+                                : const Color(0xffd3d5d5),
+                            width: 3,
                           ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: screenwidthFixed * 10,
-                              ),
-                              SizedBox(
-                                width: screenwidthFixed * 22,
-                                height: screenheightFixed * 18,
-                                child: const Text(
-                                  textAlign: TextAlign.start,
-                                  '분류',
-                                  style: TextStyle(
-                                    fontFamily: 'Pretendard-Medium',
-                                    fontWeight: FontWeight.w500,
-                                    fontSize: 14,
-                                    color: Color(0xff4b5656),
-                                  ),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: Column(
+                          children: [
+                            SizedBox(
+                              height: screenheightFixed * 10,
+                            ),
+                            Row(
+                              children: [
+                                SizedBox(
+                                  width: screenwidthFixed * 10,
                                 ),
-                              )
-                            ],
-                          ),
-                          SizedBox(
-                            height: screenheightFixed * 1,
-                          ),
-                          Row(
-                            children: [
-                              SizedBox(
-                                width: screenwidthFixed * 6,
-                              ),
-                              SizedBox(
-                                width: screenwidthFixed * 150,
-                                height: screenheightFixed * 35,
-                                child: TextButton(
-                                  onPressed: () {},
-                                  style: TextButton.styleFrom(
-                                    minimumSize: Size.zero,
-                                    padding: EdgeInsets.zero,
-                                    tapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
-                                  ),
+                                SizedBox(
+                                  width: screenwidthFixed * 52,
+                                  height: screenheightFixed * 22,
                                   child: const Text(
-                                    '분류를 선택해주세요',
+                                    textAlign: TextAlign.start,
+                                    '분류',
                                     style: TextStyle(
                                       fontFamily: 'Pretendard-Medium',
                                       fontWeight: FontWeight.w500,
-                                      fontSize: 20,
-                                      color: Color(0xff7c8585),
+                                      fontSize: 14,
+                                      color: Color(0xff878787),
                                     ),
                                   ),
-                                ),
+                                )
+                              ],
+                            ),
+                            SizedBox(
+                              height: screenheightFixed * 5,
+                            ),
+                            SizedBox(
+                              width: screenwidthFixed * 232,
+                              height: screenheightFixed * 20,
+                              child: TextField(
+                                decoration: const InputDecoration(
+                                    border: InputBorder.none),
+                                onChanged: (value) {
+                                  setState(() {
+                                    productcategory_new = value;
+                                  });
+                                },
                               ),
-                            ],
-                          )
-                        ],
+                            )
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -207,7 +437,27 @@ class _ThirdContainerState extends State<ThirdContainer> {
                         padding: const EdgeInsets.all(0),
                         backgroundColor: const Color(0xff2ea4ab),
                       ),
-                      onPressed: () {},
+                      onPressed: () async {
+                        if (productcost_new != null &&
+                            productbarcode_new != null &&
+                            productcategory_new != null &&
+                            productname_new != null) {
+                          await addInfo(
+                            name: productname_new!,
+                            price: productcost_new!,
+                            barcode: productbarcode_new!,
+                            category: productcategory_new!,
+                          );
+                        } else {
+                          Get.snackbar(
+                            '알림',
+                            '네 가지의 정보를 모두 입력하고 등록해주세요.',
+                            snackPosition: SnackPosition.BOTTOM,
+                            duration: const Duration(seconds: 2),
+                          );
+                          return;
+                        }
+                      },
                       child: const Text(
                         '저장',
                         style: TextStyle(
