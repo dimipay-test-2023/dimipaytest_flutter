@@ -480,6 +480,12 @@ class _ThirdContainerState extends State<ThirdContainer> {
                             productcost_new = null;
                           });
                           clearTextField();
+                          Get.snackbar(
+                            '알림',
+                            '상품 등록이 완료되었어요!',
+                            snackPosition: SnackPosition.BOTTOM,
+                            duration: const Duration(seconds: 2),
+                          );
                         } else {
                           Get.snackbar(
                             '알림',
