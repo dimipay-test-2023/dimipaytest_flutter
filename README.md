@@ -19,3 +19,5 @@ Android Emulator - 13.5_Freeform_API를 기준으로 제작하였습니다.
 
 ![Screenshot_1692796804](https://github.com/dimipay-test-2023/dimipaytest_flutter/assets/119688507/67f30b2f-fc94-46a3-8863-2af9a8468003)
 
+
+![Screenshot_1692797348](https://github.com/dimipay-test-2023/dimipaytest_flutter/assets/119688507/c47519bc-5371-4cc1-80f8-d1a528559532)
