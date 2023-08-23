@@ -1,10 +1,16 @@
 # dimipay_performancetest
 
-디미페이 퍼포먼스 테스트입니다.
+디미페이 퍼포먼스 테스트
+
+디미페이 관리자 페이지입니다.
 
 ## Getting Started
 
 Android Emulator - 13.5_Freeform_API를 기준으로 제작하였습니다.
+
+## Made by.
+
+김도윤, 조성민
 
 ## Emulator Capture
 
