@@ -266,9 +266,19 @@ class _BottomButtonState extends State<BottomButton> {
               SizedBox(
                 width: screenwidthFixed * 16,
               ),
-              SizedBox(
+              Container(
                 width: screenwidthFixed * 102,
                 height: screenheightFixed * 40,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xff2ea4ab).withOpacity(0.7),
+                      spreadRadius: 0,
+                      blurRadius: 10,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
@@ -290,9 +300,19 @@ class _BottomButtonState extends State<BottomButton> {
               SizedBox(
                 width: screenwidthFixed * 8,
               ),
-              SizedBox(
+              Container(
                 width: screenwidthFixed * 104,
                 height: screenheightFixed * 40,
+                decoration: BoxDecoration(
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color(0xff2ea4ab).withOpacity(0.7),
+                      spreadRadius: 0,
+                      blurRadius: 10,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
+                ),
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
